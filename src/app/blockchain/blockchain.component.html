@@ -13,7 +13,7 @@
                     <th>Weight (KWU)</th>
                 </tr></thead>
                 <tbody id="blockchain_list">
-                    <tr *ngFor="let blockchain of blockchains">
+                    <tr (click)="onSelect(blockchain)" *ngFor="let blockchain of blockchains">
                         <td>{{blockchain.height}}</td>
                         <td>{{blockchain.timestamp}}</td>
                         <td>{{blockchain.tx_count}}</td>
@@ -26,7 +26,7 @@
         </div>
     </div>
 </div>
-<p>test works!</p>
+<!-- <p>test works!</p>
 <h2>
     Welcome {{name}}
 </h2>
@@ -44,7 +44,7 @@
 </h2>
 <h2>
     {{greeting()}}
-</h2>
+</h2> -->
 <h2>
     {{siteUrl}}
 </h2>

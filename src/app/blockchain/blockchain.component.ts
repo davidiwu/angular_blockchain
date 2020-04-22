@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlockChainService } from '../blockchain.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-test',
@@ -12,7 +13,8 @@ export class BlockchainComponent implements OnInit {
   public siteUrl = window.location.href;
 
   public blockchains = []
-  constructor(private _blockchainService: BlockChainService) { }
+  constructor(private _blockchainService: BlockChainService,
+              private _router: Router) { }
 
   ngOnInit(): void {
     this._blockchainService.getBlockChainList()
@@ -21,5 +23,9 @@ export class BlockchainComponent implements OnInit {
 
   greeting(): string {
     return "hello " + this.name;
+  }
+
+  onSelect(blockchain) {
+    this._router.navigate(['/details', blockchain.id])
   }
 }
