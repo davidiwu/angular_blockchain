@@ -1,3 +1,6 @@
 #blockchain_list > tr {
     cursor:pointer;
 }
+.bold {
+    font-weight:bold;
+}

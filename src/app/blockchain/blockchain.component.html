@@ -1,15 +1,20 @@
 
 
 <div class="container">
-
-    <div class="raw">
+    <div class="row"><div class="col-md-10 bold">
+        Search blockchain by Height:
+    </div></div>
+    <div class="row">        
         <div class="col-md-10">
             <input class="form-control" type="text" value="Search Height" [(ngModel)]="search" />   
-        </div>     
-        <button class="btn" (click)="onClick()">Search</button>
+        </div>   
+        <div class="col-md-2"> 
+            <button class="btn" (click)="onClick()">Search</button>
+        </div> 
         <br />
     </div>
 
+    <br />  
     <br />  
     <div *ngIf="errorMsg; then thenBlock; else elseBlock"></div>
 </div>
