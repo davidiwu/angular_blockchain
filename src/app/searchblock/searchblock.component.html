@@ -1,0 +1,18 @@
+
+<div class="container">
+    <div *ngIf="errorMsg; then thenBlock; else elseBlock"></div>
+</div>
+
+<ng-template #thenBlock>
+    <div class="alert alert-danger" role="alert">        
+        Search Error: ' {{search_height}} ' is not a valid height value.
+    </div>
+</ng-template>
+
+<ng-template #elseBlock>
+    <div class="row">
+        Search height: {{search_height}}
+        <br />
+        returns: {{return_id}}
+    </div>
+</ng-template>

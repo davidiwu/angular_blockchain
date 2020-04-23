@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 })
 export class BlockchainComponent implements OnInit {
 
-  public name = "blockchain";
-  public siteUrl = window.location.href;
+  public errorMsg;
+  public search;
 
   public blockchains = []
   constructor(private _blockchainService: BlockChainService,
@@ -18,14 +18,16 @@ export class BlockchainComponent implements OnInit {
 
   ngOnInit(): void {
     this._blockchainService.getBlockChainList()
-      .subscribe(data => this.blockchains = data);
-  }
-
-  greeting(): string {
-    return "hello " + this.name;
+      .subscribe(data => this.blockchains = data,
+                  error => this.errorMsg = error );
   }
 
   onSelect(blockchain) {
     this._router.navigate(['/details', blockchain.id])
   }
+
+  onClick() {
+    this._router.navigate(['/search', this.search])
+  }
+
 }

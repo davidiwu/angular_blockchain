@@ -10,6 +10,7 @@ import { IBlockChain } from '../blockchain';
 })
 export class BlockdetailComponent implements OnInit {
 
+  public loaded = false;
   public blockdetail: IBlockChain; // todo: null when the component is loaded
 
   constructor(private _blockchainService: BlockChainService,
@@ -21,6 +22,8 @@ export class BlockdetailComponent implements OnInit {
 
     this._blockchainService.getBlockDetail(id)
       .subscribe(data => this.blockdetail = data);
+
+    this.loaded = true;
   }
 
 }

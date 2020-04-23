@@ -1,5 +1,13 @@
-<p>blockdetail works!</p>
-<h2>
-    id: {{blockdetail.id}}
-    weight: {{blockdetail.weight}}
-</h2>
+
+<div *ngIf="loaded; then thenBlock; else elseBlock"></div>
+
+<ng-template #thenBlock>
+    <h2>
+        id: {{blockdetail.id}}
+        weight: {{blockdetail.weight}}
+    </h2>
+</ng-template>
+
+<ng-template #elseBlock>
+    <h2>Loading...</h2>
+</ng-template>
