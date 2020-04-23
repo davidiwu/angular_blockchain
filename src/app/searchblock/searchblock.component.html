@@ -2,6 +2,8 @@
 <div class="container">
     <div *ngIf="errorMsg; then thenBlock; else elseBlock"></div>
 </div>
+<br />
+<router-outlet></router-outlet>
 
 <ng-template #thenBlock>
     <div class="alert alert-danger" role="alert">        
@@ -11,8 +13,10 @@
 
 <ng-template #elseBlock>
     <div class="row">
+        <div class="col-md-12">
         Search height: {{search_height}}
         <br />
         returns: {{return_id}}
+    </div>
     </div>
 </ng-template>

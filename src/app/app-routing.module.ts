@@ -7,7 +7,13 @@ import { SearchblockComponent } from './searchblock/searchblock.component';
 const routes: Routes = [
   { path:'details/:id', component: BlockdetailComponent },
   { path:'', component: BlockchainComponent },
-  { path:'search/:height', component:SearchblockComponent}
+  { 
+    path:'search/:height', 
+    component:SearchblockComponent,
+    children: [
+      {path:'details/:id', component:BlockdetailComponent}
+    ]
+  }
 ];
 
 @NgModule({

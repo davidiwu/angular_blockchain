@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlockChainService } from '../blockchain.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-searchblock',
@@ -14,7 +14,8 @@ export class SearchblockComponent implements OnInit {
   public errorMsg: string;
 
   constructor(private _blockchainService: BlockChainService,
-              private _route: ActivatedRoute) { }
+              private _route: ActivatedRoute,
+              private _router: Router) { }
 
   ngOnInit(): void {
 
@@ -22,9 +23,13 @@ export class SearchblockComponent implements OnInit {
     this.search_height = height
 
     this._blockchainService.searchBlock(height)
-      .subscribe(data => this.return_id = data,
-                  error => this.errorMsg = error);
+      .subscribe(data => {
+                this.return_id = data;
+                this._router.navigate(['details', this.return_id], {relativeTo:this._route}, )
+              },
+              error => this.errorMsg = error);
 
+    
   }
 
 }
