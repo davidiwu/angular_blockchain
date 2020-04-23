@@ -3,8 +3,10 @@
 <div class="container">
 
     <div class="raw">
-        <input type="text" value="Search Height" [(ngModel)]="search" />        
-        <button (click)="onClick()">Search</button>
+        <div class="col-md-10">
+            <input class="form-control" type="text" value="Search Height" [(ngModel)]="search" />   
+        </div>     
+        <button class="btn" (click)="onClick()">Search</button>
         <br />
     </div>
 
@@ -13,8 +15,7 @@
 </div>
 
 <ng-template #thenBlock>
-    <div class="alert alert-success" role="alert">
-        <button type="button" class="close" data-dismiss="alert">x</button>
+    <div class="alert alert-danger" role="alert">
         {{ errorMsg }}
     </div>
 </ng-template>
@@ -35,8 +36,8 @@
                         <td>{{blockchain.height}}</td>
                         <td>{{blockchain.timestamp}}</td>
                         <td>{{blockchain.tx_count}}</td>
-                        <td>{{blockchain.size}}</td>
-                        <td>{{blockchain.weight}}</td>
+                        <td>{{blockchain.size/1000}}</td>
+                        <td>{{blockchain.weight/1000}}</td>
                     </tr>
                 </tbody>
             </table>            

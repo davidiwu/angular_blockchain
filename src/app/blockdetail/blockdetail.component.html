@@ -1,13 +1,20 @@
 
-<div *ngIf="loaded; then thenBlock; else elseBlock"></div>
 
-<ng-template #thenBlock>
-    <h2>
-        id: {{blockdetail.id}}
-        weight: {{blockdetail.weight}}
-    </h2>
-</ng-template>
-
-<ng-template #elseBlock>
-    <h2>Loading...</h2>
-</ng-template>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                Block details for id: {{id}}:
+            </div>
+            <br />
+            <table class="table table-striped table-bordered table-hover">
+                <tbody>
+                <tr *ngFor="let col of cols">
+                    <td class="bold">{{col}}:</td>
+                    <td>{{blockdetail[col]}}</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>

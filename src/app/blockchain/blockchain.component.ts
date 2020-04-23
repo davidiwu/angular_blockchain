@@ -30,4 +30,9 @@ export class BlockchainComponent implements OnInit {
     this._router.navigate(['/search', this.search])
   }
 
+  covertToData(timestamp) {
+    let trade_time = new Date(timestamp);
+    return trade_time;
+  }
+
 }
