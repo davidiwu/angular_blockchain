@@ -11,7 +11,7 @@ import { IBlockChain } from '../blockchain';
 export class BlockdetailComponent implements OnInit {
 
   public loaded = false;
-  public blockdetail: IBlockChain; // todo: null when the component is loaded
+  public blockdetail: IBlockChain = this.getDummyDetail(); 
   public cols = ['bits','difficulty','height','id','merkle_root','nonce','previousblockhash','size','timestamp','tx_count','version','weight']
   public id;
   constructor(private _blockchainService: BlockChainService,
@@ -26,6 +26,23 @@ export class BlockdetailComponent implements OnInit {
       .subscribe(data => this.blockdetail = data);
 
     this.loaded = true;
+  }
+
+  getDummyDetail() : IBlockChain {
+    return {
+      bits: 0,
+      difficulty: 0,
+      height: 0,
+      id: '0',
+      merkle_root: '0',
+      nonce: 0,
+      previousblockhash: '0',
+      size: 0,
+      timestamp: 0,
+      tx_count: 0,
+      version: 0,
+      weight: 0
+    }
   }
 
 

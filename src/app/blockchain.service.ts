@@ -9,6 +9,7 @@ export class BlockChainService {
     private _list_url: string = "https://blockstream.info/api/blocks/";
     private _detail_url: string = "https://blockstream.info/api/block/";
     private _search_url: string = "https://blockstream.info/api/block-height/";
+    private _height_url; string = "https://blockstream.info/api/blocks/tip/height";
 
     constructor(private _http: HttpClient) {}
 
@@ -37,6 +38,20 @@ export class BlockChainService {
         return this._http.get(this._search_url + height,  {responseType: "text"})
                          .pipe(                             
                                 catchError(this.errorHandler)  
+                         );
+    }
+
+    getTipHeight(): Observable<string> {
+        return this._http.get(this._height_url,  {responseType: "text"})
+                            .pipe(
+                                catchError(this.errorHandler)
+                            );
+    }
+
+    loadMoreBlocks(tip): Observable<IBlockChain[]> {
+        return this._http.get<IBlockChain[]>(this._list_url + tip)
+                         .pipe(
+                             catchError(this.errorHandler)
                          );
     }
 }

@@ -9,7 +9,7 @@
             <input class="form-control" type="text" value="Search Height" [(ngModel)]="search" />   
         </div>   
         <div class="col-md-2"> 
-            <button class="btn" (click)="onClick()">Search</button>
+            <button class="btn" (click)="onSearchClick()">Search</button>
         </div> 
         <br />
     </div>
@@ -17,6 +17,15 @@
     <br />  
     <br />  
     <div *ngIf="errorMsg; then thenBlock; else elseBlock"></div>
+
+    <div class="row">
+        <div class="col-md-12 center">
+            <button class="btn" (click)="onLoadMore()">Load More ></button>
+        </div>
+    </div>
+    <div>
+        <br />
+    </div>
 </div>
 
 <ng-template #thenBlock>
